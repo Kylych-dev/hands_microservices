@@ -1,6 +1,9 @@
 FROM python:3.12
+RUN apt-get update
+RUN apt-get install -y gcc
+RUN apt-get install -y default-libmysqlclient-dev
 ENV PYTHONBUFFERED 1
 WORKDIR /app
 COPY requirements.txt /app/requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app
