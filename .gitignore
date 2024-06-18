@@ -140,3 +140,7 @@ GitHub.sublime-settings
 
 .idea/
 .dockerignore
+
+ backend/.dbdata/
+
+ /backend/.dbdata/
