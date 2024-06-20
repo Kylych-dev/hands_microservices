@@ -4,9 +4,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: 'python manage.py runserver 0.0.0.0:8000'
+    command: 'python main.py'
     ports:
-      - '8000:8000'
+      - '7001:5000'
     volumes:
       - .:/app
     depends_on:
@@ -24,11 +24,11 @@ services:
     image: mysql:8.0.37
     restart: always
     environment:
-      MYSQL_DATABASE: microservicesdb
+      MYSQL_DATABASE: flask_back
       MYSQL_USER: mirbekov
       MYSQL_PASSWORD: 1
       MYSQL_ROOT_PASSWORD: 1
     volumes:
       - .dbdata:/var/lib/mysql
     ports:
-      - 33066:3306
+      - 33067:3306

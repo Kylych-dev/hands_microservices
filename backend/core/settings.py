@@ -89,3 +89,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+
+
+
+'''
+
+
+docker ps -q | xargs -r docker stop
+docker ps -aq | xargs -r docker rm
+docker images -q | xargs -r docker rmi
+docker network ls -q | xargs -r docker network rm
+docker volume ls -q | xargs -r docker volume rm
+docker system prune -a --volumes -f
+docker-compose down --rmi all --volumes --remove-orphans
+
+'''

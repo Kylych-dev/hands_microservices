@@ -16,12 +16,23 @@ class ProductViewSet(viewsets.ViewSet):
 
     def create(self, request):
         serializer = ProductSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(
+        serializer.is_valid(raise_exception=True)
+
+        serializer.save()
+        return Response(
                 serializer.data,
                 status=status.HTTP_201_CREATED
             )
+
+    def update(self, request, pk=None):
+        product = Product.objects.get(pk=pk)
+        serializer = ProductSerializer(product, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(
+            serializer.data,
+            status=status.HTTP_200_OK
+        )
 
     def retrieve(self, request, pk=None):
         product = Product.objects.get(pk=pk)
