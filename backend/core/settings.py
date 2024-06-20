@@ -103,4 +103,9 @@ docker volume ls -q | xargs -r docker volume rm
 docker system prune -a --volumes -f
 docker-compose down --rmi all --volumes --remove-orphans
 
+
+docker-compose up --build -d
+docker-compose ps
+
+
 '''

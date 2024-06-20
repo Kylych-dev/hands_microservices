@@ -144,4 +144,4 @@ GitHub.sublime-settings
  backend/.dbdata/
 
 /backend/.dbdata/
-backend/.dbdata/
+/flask_backend/.dbdata/
