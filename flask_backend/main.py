@@ -1,9 +1,10 @@
 from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import UniqueConstraint
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://mirbekov:1@db:3306/flask_bd'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://mirbekov:1@db/flask_back'
 CORS(app)
 
 
@@ -25,6 +26,11 @@ class ProductUser(db.Model):
     user_id = db.Column(db.Integer)
     product_id = db.Column(db.Integer)
 
+    UniqueConstraint('user_id', 'product_id', name='unique_product_id')
+
+    def __init__(self, user_id, product_id):
+        self.user_id = user_id
+        self.product_id = product_id
 
 
 @app.route('/')
