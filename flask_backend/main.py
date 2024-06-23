@@ -16,7 +16,8 @@ class Product(db.Model):
     title = db.Column(db.String(80))
     price = db.Column(db.Float, nullable=False)
 
-    def __init__(self, title, price):
+    def __init__(self, id, title, price):
+        self.id = id
         self.title = title
         self.price = price
 

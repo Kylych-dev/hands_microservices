@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    command: 'python main.py'
     ports:
       - 8001:5000
     volumes:
@@ -11,6 +12,17 @@ services:
     depends_on:
       - db
     restart: unless-stopped
+
+
+  queue:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: 'python -m consumer'
+    depends_on:
+      - db
+    restart: unless-stopped
+
 
   db:
     image: mysql:8.0.37
